@@ -1,6 +1,17 @@
 # Just Futures
 
-## Deploy HOW TO
+## Install Dependencies
+If npx is not installed yet:
+`npm install -g npx`
+
+Install packages:
+`npm i`
+
+## Compile Contracts
+`npx hardhat compile`
+
+## Deploy the Contracts
+
 The scripts to deploy in an EVM network are in **scripts/deploy-polygon/**
 
 Yo need to run the scripts and fill the **scripts/deploy-polygon/Deployed.js** manually:
