@@ -2,7 +2,11 @@ const fs = require('fs')
 const path = require('path')
 const parse = require('csv-parse')
 
-const network = (process.env.HARDHAT_NETWORK || 'mainnet');
+
+const {HARDHAT_NETWORK} = require("../../env.json")
+//process.env.HARDHAT_NETWORK
+const network = (HARDHAT_NETWORK || 'mainnet');
+//const network = (process.env.HARDHAT_NETWORK || 'mainnet');
 
 const readCsv = async (file) => {
   records = []
@@ -26,7 +30,9 @@ function getChainId(network) {
   if (network === "avax") {
     return 43114
   }
-
+  if (network === "polygon") {
+    return 137
+  }
   throw new Error("Unsupported network")
 }
 
@@ -93,7 +99,7 @@ async function contractAt(name, address, provider) {
   return await contractFactory.attach(address)
 }
 
-const tmpAddressesFilepath = path.join(__dirname, '..', '..', `.tmp-addresses-${process.env.HARDHAT_NETWORK}.json`)
+const tmpAddressesFilepath = path.join(__dirname, '..', '..', `.tmp-addresses-${HARDHAT_NETWORK}.json`)
 
 function readTmpAddresses() {
   if (fs.existsSync(tmpAddressesFilepath)) {

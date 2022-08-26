@@ -15,3 +15,5 @@ distribution-data*.json
 #Hardhat files
 cache
 artifacts
+keys.json
+.notes.txt

@@ -1,0 +1,4 @@
+Deploying OrderBook 0x5FbDB2315678afecb367f032d93F642f64180aa3 
+... Completed!
+Sending orderBook.initialize...
+... Sent! 0x60c9b33af5bf0a87cd58bcf91238516cbffcf79d310e0abd716ac1802676cb9c

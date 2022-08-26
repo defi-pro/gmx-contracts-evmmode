@@ -1,0 +1,31 @@
+> npx hardhat run  scripts/deploy/01deployVault.js  --network polygon
+
+No need to generate any newer typings.
+neetttttworkkkk polygon
+Deploying Vault 0x0702149F9f41d6C4102867fafDdC1d9f172F658d 
+... Completed!
+Deploying USDG 0xe7Ff9d19A9b758D57D480f5dA2135871e6fC8F5e "0x0702149F9f41d6C4102867fafDdC1d9f172F658d"
+... Completed!
+Deploying Router 0x0Ecc52BB3DbC6E3ce4A46A642133726adF481666 "0x0702149F9f41d6C4102867fafDdC1d9f172F658d" "0xe7Ff9d19A9b758D57D480f5dA2135871e6fC8F5e" "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270"
+... Completed!
+Deploying VaultPriceFeed 0x480D014938036ED1B69A3EB83DEE529c3f6425e5 
+... Completed!
+Sending vaultPriceFeed.setMaxStrictPriceDeviation...
+... Sent! 0x1e423f0da1ed0cd600f0041773eb5bb436a0280e0af690e360bca2680e7197d2
+Error: nonce has already been used [ See: https://links.ethers.org/v5-errors-NONCE_EXPIRED ] (error={"name":"ProviderError","code":-32000,"_isProviderError":true}, method="sendTransaction", transaction=undefined, code=NONCE_EXPIRED, version=providers/5.6.1)
+    at Logger.makeError (D:\Dev\gmx-contracts-evm\node_modules\@ethersproject\logger\src.ts\index.ts:261:28)
+    at Logger.throwError (D:\Dev\gmx-contracts-evm\node_modules\@ethersproject\logger\src.ts\index.ts:273:20)
+    at checkError (D:\Dev\gmx-contracts-evm\node_modules\@ethersproject\providers\src.ts\json-rpc-provider.ts:60:16)
+    at D:\Dev\gmx-contracts-evm\node_modules\@ethersproject\providers\src.ts\json-rpc-provider.ts:215:24
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  reason: 'nonce has already been used',
+  code: 'NONCE_EXPIRED',
+  error: ProviderError: nonce too low
+      at HttpProvider.request (D:\Dev\gmx-contracts-evm\node_modules\hardhat\src\internal\core\providers\http.ts:74:19)
+      at LocalAccountsProvider.request (D:\Dev\gmx-contracts-evm\node_modules\hardhat\src\internal\core\providers\accounts.ts:182:36)  
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+      at EthersProviderWrapper.send (D:\Dev\gmx-contracts-evm\node_modules\@nomiclabs\hardhat-ethers\src\internal\ethers-provider-wrapper.ts:13:20),
+  method: 'sendTransaction',
+  transaction: undefined
+}
+

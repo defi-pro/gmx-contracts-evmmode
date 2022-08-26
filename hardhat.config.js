@@ -19,11 +19,30 @@ const {
   ARBITRUM_URL,
   AVAX_DEPLOY_KEY,
   AVAX_URL,
-  POLYGON_DEPLOY_KEY,
   POLYGON_URL,
   MAINNET_URL,
   MAINNET_DEPLOY_KEY
 } = require("./env.json")
+
+const POLYGON_DEPLOY_KEY = (()=>{
+      try{
+        const {POLYGON_DEPLOY_KEY} = require("./keys.json");
+        return POLYGON_DEPLOY_KEY;
+      } catch {
+        console.error(
+        ```
+        No POLYGON_DEPLOY_KEY found, please create a file in the root 
+        keys.json with this format:
+
+          {
+            "POLYGON_DEPLOY_KEY":"0x THE DEPLOY KEY HEXAHECIMAL"
+          }
+        ```
+        );
+        }
+      }
+  )();
+
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
