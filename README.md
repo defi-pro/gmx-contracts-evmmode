@@ -12,7 +12,18 @@ Install packages:
 
 ## Deploy the Contracts
 
-The scripts to deploy in an EVM network are in **scripts/deploy-polygon/**
+The scripts to deploy in zksync EVM network are in **scripts/deploy-zk/**
+
+Yo need to run the scripts and fill the **scripts/deploy-zk/Deployed.js** manually:
+
+```
+npx hardhat --network zksync_v2  run  scripts/deploy-zk/01deployVault.js 
+npx hardhat --network zksync_v2  run  scripts/deploy-zk/02deployOrderBook.js 
+npx hardhat --network zksync_v2  run  scripts/deploy-zk/03deployPosition.js 
+npx hardhat --network zksync_v2  run  scripts/deploy-zk/04deployPeripherals.js 
+```
+
+The scripts to deploy in polygon EVM network are in **scripts/deploy-polygon/**
 
 Yo need to run the scripts and fill the **scripts/deploy-polygon/Deployed.js** manually:
 

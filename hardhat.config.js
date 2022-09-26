@@ -20,28 +20,12 @@ const {
   AVAX_DEPLOY_KEY,
   AVAX_URL,
   POLYGON_URL,
+  ZKSYNC_V2_URL,
   MAINNET_URL,
   MAINNET_DEPLOY_KEY
 } = require("./env.json")
+const {POLYGON_DEPLOY_KEY,ZKSYNC_V2_DEPLOY_KEY} = require("./keys.json");
 
-const POLYGON_DEPLOY_KEY = (()=>{
-      try{
-        const {POLYGON_DEPLOY_KEY} = require("./keys.json");
-        return POLYGON_DEPLOY_KEY;
-      } catch {
-        console.error(
-        ```
-        No POLYGON_DEPLOY_KEY found, please create a file in the root 
-        keys.json with this format:
-
-          {
-            "POLYGON_DEPLOY_KEY":"0x THE DEPLOY KEY HEXAHECIMAL"
-          }
-        ```
-        );
-        }
-      }
-  )();
 
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -100,6 +84,15 @@ module.exports = {
       gasPrice: 100000000000,
       chainId: 137,
       accounts: [POLYGON_DEPLOY_KEY]
+    },
+    zksync_v2: {
+      // https://v2-docs.zksync.io/dev/testnet/metamask.html
+      // also have WebSocket URL: wss://zksync2-testnet.zksync.dev/ws
+
+      url: ZKSYNC_V2_URL,
+      gasPrice: 10000000000,
+      chainId: 280,
+      accounts: [ZKSYNC_V2_DEPLOY_KEY]
     },
     mainnet: {
       url: MAINNET_URL,
