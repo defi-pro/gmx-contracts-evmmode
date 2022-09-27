@@ -77,13 +77,16 @@ async function callWithRetries(func, args, retriesCount = 3) {
 async function deployContract(name, args, label, options) {
   let info = name
   if (label) { info = name + ":" + label }
+
   const contractFactory = await ethers.getContractFactory(name)
   let contract
+  
   if (options) {
     contract = await contractFactory.deploy(...args, options)
   } else {
     contract = await contractFactory.deploy(...args)
   }
+
   const argStr = args.map((i) => `"${i}"`).join(" ")
   console.info(`Deploying ${info} ${contract.address} ${argStr}`)
   await contract.deployTransaction.wait()
