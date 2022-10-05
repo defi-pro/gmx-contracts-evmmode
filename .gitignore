@@ -16,3 +16,4 @@ cache
 artifacts
 keys.json
 .notes.txt
+artifacts-zk

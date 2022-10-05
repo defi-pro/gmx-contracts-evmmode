@@ -1,11 +1,11 @@
-const {POLYGON_DEPLOY_KEY,ZKSYNC_V2_DEPLOY_KEY} = require("./keys.json");
 require("@nomiclabs/hardhat-waffle")
 require("@nomiclabs/hardhat-etherscan")
 require("hardhat-contract-sizer")
 require('@typechain/hardhat')
+
 require("@matterlabs/hardhat-zksync-deploy");
 require("@matterlabs/hardhat-zksync-solc");
-
+ 
 const {
   BSC_URL,
   BSC_DEPLOY_KEY,
@@ -23,9 +23,12 @@ const {
   AVAX_DEPLOY_KEY,
   AVAX_URL,
   POLYGON_URL,
+  ZKSYNC_V2_URL,
   MAINNET_URL,
   MAINNET_DEPLOY_KEY
 } = require("./env.json")
+const {POLYGON_DEPLOY_KEY,ZKSYNC_V2_DEPLOY_KEY} = require("./keys.json");
+
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -44,10 +47,27 @@ task("accounts", "Prints the list of accounts", async () => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
+  zksolc: {
+    version: "0.1.0",
+    compilerSource: "docker",
+    settings: {
+      optimizer: {
+        enabled: true,
+      },
+      experimental: {
+        dockerImage: "matterlabs/zksolc",
+        tag: "v1.1.5"
+      }
+    },
+  },
+  zkSyncDeploy: {
+    zkSyncNetwork: "https://zksync2-testnet.zksync.dev",
+    ethNetwork: "goerli", // Can also be the RPC URL of the network (e.g. `https://goerli.infura.io/v3/<API_KEY>`)
+  },  
   networks: {
     hardhat: {
-      allowUnlimitedContractSize: true,
-      zksync: true
+      zksync: true,
+      allowUnlimitedContractSize: true
     },
     bsc: {
       url: BSC_URL,
@@ -75,7 +95,7 @@ module.exports = {
     },
     avax: {
       url: AVAX_URL,
-      gasPrice: 100000000000,
+      gasPrice: 200000000000,
       chainId: 43114,
       accounts: [AVAX_DEPLOY_KEY]
     },
@@ -84,6 +104,15 @@ module.exports = {
       gasPrice: 100000000000,
       chainId: 137,
       accounts: [POLYGON_DEPLOY_KEY]
+    },
+    zksync_v2: {
+      // https://v2-docs.zksync.io/dev/testnet/metamask.html
+      // also have WebSocket URL: wss://zksync2-testnet.zksync.dev/ws
+
+      url: ZKSYNC_V2_URL,
+      gasPrice: 10000000000,
+      chainId: 280,
+      accounts: [ZKSYNC_V2_DEPLOY_KEY]
     },
     mainnet: {
       url: MAINNET_URL,
@@ -112,21 +141,5 @@ module.exports = {
   typechain: {
     outDir: "typechain",
     target: "ethers-v5",
-  },
-  zksolc: {
-    version: "1.1.6",
-    compilerSource: "binary",
-    settings: {
-      optimizer: {
-        enabled: true,
-      },
-      experimental: {
-
-      },
-    },
-  },
-  zkSyncDeploy: {
-    zkSyncNetwork: "https://zksync2-testnet.zksync.dev",
-    ethNetwork: "goerli", // Can also be the RPC URL of the network (e.g. `https://goerli.infura.io/v3/<API_KEY>`)
   },
 }

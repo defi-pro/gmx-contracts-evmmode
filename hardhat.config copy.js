@@ -3,8 +3,6 @@ require("@nomiclabs/hardhat-waffle")
 require("@nomiclabs/hardhat-etherscan")
 require("hardhat-contract-sizer")
 require('@typechain/hardhat')
-require("@matterlabs/hardhat-zksync-deploy");
-require("@matterlabs/hardhat-zksync-solc");
 
 const {
   BSC_URL,
@@ -114,14 +112,16 @@ module.exports = {
     target: "ethers-v5",
   },
   zksolc: {
-    version: "1.1.6",
-    compilerSource: "binary",
+    version: "0.1.0",
+    compilerSource: "docker",
     settings: {
+      compilerPath: "zksolc",
       optimizer: {
         enabled: true,
       },
       experimental: {
-
+        dockerImage: "matterlabs/zksolc",
+        tag: "latest"
       },
     },
   },
