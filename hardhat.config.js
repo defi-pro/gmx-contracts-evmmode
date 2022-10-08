@@ -104,8 +104,8 @@ module.exports = {
     version: "0.6.12",
     settings: {
       optimizer: {
-        enabled: true,
-        runs: 1
+        //enabled: true,//`optimizer` setting is deprecated, optimizer is always enabled
+        runs: 100
       }
     }
   },
@@ -118,7 +118,13 @@ module.exports = {
     compilerSource: "binary",
     settings: {
       optimizer: {
-        enabled: true,
+        enabled: true,//`optimizer` setting is deprecated, optimizer is always enabled
+        //runs: 10 //  This contract may not be deployable on mainnet. Consider enabling the optimizer (with a low "runs" value!)
+        /* fULL ERROR
+        contracts/peripherals/Timelock.sol:24:1: Warning: Contract code size exceeds 24576 bytes (a limit introduced in Spurious Dragon).
+         This contract may not be deployable on mainnet. Consider enabling the optimizer (with a low "runs" value!), turning off revert strings, or using libraries.
+        contract Timelock is ITimelock {
+        ^ (Relevant source part starts here and spans across multiple lines).*/
       },
       experimental: {
 
