@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@matterlabs/hardhat-zksync-deploy": "^0.4.0",
+    "@matterlabs/hardhat-zksync-deploy": "^0.5.1",
     "@matterlabs/hardhat-zksync-solc": "^0.3.9",
     "@nomiclabs/hardhat-ethers": "^2.0.1",
     "@nomiclabs/hardhat-etherscan": "^3.0.3",
@@ -26,15 +26,13 @@
     "ethers": "^5.4.6",
     "hardhat": "^2.6.1",
     "hardhat-contract-sizer": "^2.0.3",
-    "node-fetch": "3.2.3",
     "typechain": "^5.1.2",
-    "zksync-web3": "^0.8.0"
+    "zksync-web3": "^0.11.0"
   },
   "dependencies": {
     "@uniswap/sdk-core": "^3.0.1",
     "@uniswap/v3-sdk": "^3.8.2",
     "bn.js": "^5.2.0",
-    "csv-parse": "^4.16.3",
-    "node-fetch": "^2.6.7"
+    "csv-parse": "^4.16.3"
   }
 }

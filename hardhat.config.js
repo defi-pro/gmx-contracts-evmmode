@@ -114,7 +114,7 @@ module.exports = {
     target: "ethers-v5",
   },
   zksolc: {
-    version: "1.1.6",
+    version: "1.2.0",
     compilerSource: "binary",
     settings: {
       optimizer: {
